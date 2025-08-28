@@ -67,6 +67,15 @@ def get_policies_for_ai():
         print(f"정책 데이터 조회 오류: {e}")
         return []
 
+@app.route('/', methods=['GET'])
+def home():
+    """홈페이지 - 헬스체크용"""
+    return jsonify({
+        "status": "healthy",
+        "message": "복지정책 챗봇 API 서버가 정상 작동 중입니다!",
+        "timestamp": datetime.now().isoformat()
+    })
+
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """서버 상태 확인"""
