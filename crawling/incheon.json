@@ -1,0 +1,155 @@
+[
+  {
+    "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004717",
+    "title": "인천 청년 월세 지원",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2024.02.26~2025.02.25",
+    "conditions": "무주택, 부모와 별도거주, 중위소득 60% 이하 등",
+    "benefits": "월 최대 20만원 × 12개월, 매월 현금지급"
+  },
+  {
+    "url": "https://www.itp.or.kr/intro.asp?tmid=428",
+    "title": "인천 재직청년 복지포인트",
+    "region": [ "인천" ],
+    "age_range": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.04.01~2025.04.10",
+    "conditions": "인천 거주 18~39세, 인천 중소기업 3개월 이상 재직자",
+    "benefits": "연 최대 120만원(인천e음 30만원+복지포인트 90만원)"
+  },
+  {
+    "url": "https://www.itp.or.kr/intro.asp?tmid=494",
+    "title": "드림For 청년통장",
+    "region": [ "인천" ],
+    "age_range": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.04.07~2025.04.16",
+    "conditions": "인천 거주 18~39세 근로 청년, 인천 소재 근무 1년 이상, 기준중위소득 150% 이하",
+    "benefits": "3년 적립 후 인천시 540만원 매칭, 만기 최대 1,080만원 수령"
+  },
+  { 
+    "url": "https://youth.incheon.go.kr/bbs/bbsMsgDetail.do?msg_seq=286&bcd=notice",
+    "title": "전입청년 이사 지원사업",
+    "region": [ "인천" ],
+    "age_range": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.01.01~2025.11.30",
+    "conditions": "타지역→인천 전입 무주택 청년세대주, 소득 120% 이하 등",
+    "benefits": "이사비 최대 40만원 실비지원(계좌입금)"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/bbs/bbsMsgDetail.do?msg_seq=269&bcd=notice",
+    "title": "청년 주택임차보증금 대출이자 지원",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.04.14~2025.12.31",
+    "conditions": "인천 거주, 무주택 청년, 임차보증금 대출자(연소득 6천만원 이하)",
+    "benefits": "보증금 대출이자 연 3%~3.5% 지원, 최대 4년"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/financial/independence.jsp",
+    "title": "자립준비청년 자립수당 지급",
+    "region": [ "인천" ],
+    "age_range": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 ],
+    "application_period": "2025.01.01~2025.12.31",
+    "conditions": "보호종료 5년 이내 자립준비청년 등",
+    "benefits": "매월 50만원, 최대 60개월 현금지급"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/youthpolicy/youthPolicyInfoDetail.do?poly_seq=267",
+    "title": "인천 청년월세 지원사업",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2024.02.01~2025.02.25",
+    "conditions": "무주택, 별도거주, 임대차 청년",
+    "benefits": "월 최대 20만원, 12개월 현금지원"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/youthpolicy/youthPolicyInfoDetail.do?poly_seq=386",
+    "title": "인천 청년 이사비 지원사업",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.01.01~2025.11.30",
+    "conditions": "인천 전입 무주택 청년, 임대차보증금·월세 확인",
+    "benefits": "이사비 최대 20만원 실비지원"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/youthpolicy/youthPolicyInfoDetail.do?poly_seq=379",
+    "title": "근(根)본-잇는 청년지원사업(재직자)",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.01.01~2025.12.31",
+    "conditions": "인천 거주 뿌리산업 재직청년(특화 NCS 직업능력훈련과정 이수 등)",
+    "benefits": "직업능력개발 교육 수료시 장려금(10~40만원) 최대 3회"
+  },
+  { 
+    "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005528",
+    "title": "인천형 청년 근로장려 인센티브",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.05.01~2025.05.15",
+    "conditions": "중소기업 근로 인천청년",
+    "benefits": "연 최대 100만원 현금 인센티브"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/financial/student_loan.jsp",
+    "title": "대학생 학자금대출 이자 지원",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.07.15~2025.08.30",
+    "conditions": "부모 또는 본인 1년 이상 인천거주 재·휴학생 및 미취업 졸업생",
+    "benefits": "2019년 1학기 이후 학자금 대출이자 지급(한국장학재단 통해 차감)"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/youthpolicy/youthPolicyInfoDetail.do?poly_seq=23&menudiv=financial",
+    "title": "맞춤형 상생장학금 지원",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34 ],
+    "application_period": "2025.01.01~2025.12.31",
+    "conditions": "대학생, 저소득층 등 특성별 장학금 다수",
+    "benefits": "학업·재능·공익·다자녀 등 각종 장학금, 일부 주거지원비 포함"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/youthpolicy/youthPolicyInfoDetail.do?poly_seq=277",
+    "title": "청년 면접수당 지원사업",
+    "region": [ "인천" ],
+    "age_range": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.01.22~2025.11.30",
+    "conditions": "수도권 기업·공공기관 면접 본 미취업 청년(만18~39세, 주소 인천)",
+    "benefits": "면접 1회당 5만원, 최대 2회(10만원)"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/youthpolicy/youthPolicyInfoDetail.do?poly_seq=253",
+    "title": "청년 자격증 응시료 지원 (일부 구별광고 없는 통합표시)",
+    "region": [ "인천" ],
+    "age_range": [ 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 ],
+    "application_period": "2025.01.01~2025.12.31",
+    "conditions": "만 18~49세, 인천시 전역 거주 미취업 청년",
+    "benefits": "연 10만원 한도 내 실비 응시료 지원(횟수제한 없음)"
+  },
+  { 
+    "url": "https://m.myhome.go.kr/hws/mbl/cont/selectYouthPolicyContRentalView.do#guide=RH103",
+    "title": "영구임대주택 입주 연계지원",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.01.01~2025.12.31",
+    "conditions": "무주택 청년, 소득기준 등",
+    "benefits": "임대주택 입주 연계, 임대료 감면"
+  },
+  {
+    "url": "https://youth.incheon.go.kr/dwelling/lease.jsp",
+    "title": "청년 공공임대주택 입주지원",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.01.01~2025.12.31",
+    "conditions": "무주택 청년",
+    "benefits": "공공임대주택 입주, 임대료 지원"
+  },
+  { 
+    "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002493",
+    "title": "청년 전월세 보증금 지원",
+    "region": [ "인천" ],
+    "age_range": [ 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ],
+    "application_period": "2025.01.01~2025.12.31",
+    "conditions": "인천 거주 무주택 청년, 임대차 계약 보유",
+    "benefits": "전월세 보증금 일부 지원(현금 지급)"
+  }
+]

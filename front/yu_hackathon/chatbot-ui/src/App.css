@@ -1,0 +1,354 @@
+/* ==================== 폰트 ==================== */
+@font-face {
+  font-family: 'locus_sangsang';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/locus_sangsang.woff')
+    format('woff');
+  font-weight: normal;  
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #e9e9e9;
+}
+
+/* ==================== 인트로 화면 ==================== */
+.intro-container {
+  background: #2b537e;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-content {
+  color: white;
+  padding: 20px;
+  max-width: 320px; /* 내용 폭 제한 */
+}
+
+.intro-icon-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #2b537e;    /* 원 내부 파랑 */
+  padding: 8px;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: -60px;
+  margin-left: -10px;
+  box-sizing: border-box;
+}
+
+/* 만나서 반가워요 */
+.intro-text {
+  font-family: 'locus_sangsang', sans-serif;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 1.4;
+  margin: 0 0 40px 0;
+  text-align: left; /* 왼쪽 정렬 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0.5px 0 0 #ffffff;
+  margin-bottom: 25px;
+}
+
+.intro-text .bold {
+  font-weight: 300; /* 두께 줄임 */
+}
+
+/* 시작하기 */
+.intro-button {
+  background: white;
+  color: #2b537e;
+  font-size: 25px;
+  padding: 10px 40px;
+  border-radius: 70px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: -5px;
+  margin-top: -20px;
+  font-family: 'locus_sangsang', sans-serif;
+}
+
+.intro-button + .intro-button {
+  margin-top: 10px;
+}
+
+/* ==================== 채팅창 ==================== */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background: #2b537e;
+  color: white;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 중앙 정렬 */
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  left: 12px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 13px;
+  margin-left: -4px;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.highlight {
+  font-family: 'locus_sangsang', sans-serif;
+  font-weight: normal;
+  font-size: 24px;
+  text-align: center;
+  color: #2b537e;
+  margin-top: 35px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0.5px 0 0 #2b537e;
+}
+
+.date-label {
+  color: #999999;
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  
+}
+
+.chat-message.bot {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* 안녕하세요 고객님 */
+.message-text {
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  position: relative;
+  font-size: 12px;
+  line-height: 1.3;
+  width: calc(100% - 130px);
+  box-sizing: border-box;
+  margin-top: 40px;
+  margin-left: 0px;
+}
+
+/* 먼저 현재 거주하시는  */
+.region-question-bubble {
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.3;
+  width: calc(100% - 130px); /* 원래 넓이 */
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-left: 60px; /* 원래 왼쪽 여백 */
+}
+
+/* 먼저 현재 거주하시는 */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  width: calc(100% - 130px); /* 원래 넓이 */
+  margin-left: 60px; /* 원래 왼쪽 여백 */
+}
+
+/* 서울 경기 인천 */
+.button-grid button {
+  padding: 8px;
+  border: 2px solid transparent;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 10px;
+  transition: border 0.3s ease;
+}
+
+.button-grid button.selected {
+  border: 2px dotted #2b537e;
+  background: white;
+  color: black;
+}
+
+.chat-message.user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 20px 0 10px 0;
+  margin-top: 30px;
+}
+
+/* 사용자 메세지 */
+.chat-message.user .message-text {
+  background: #2b537e; /* 파란색 배경 */
+  color: white;        /* 흰 글씨 */
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.3;
+  max-width: 70%;      /* 최대 너비 넉넉히 */
+  width: auto;
+  white-space: normal; /* 줄바꿈 허용 */
+  text-align: left;
+  margin-right: 25px;  /* 원래 오른쪽 여백 */
+  position: relative;
+  word-break: break-word; /* 긴 단어 줄바꿈 */
+}
+
+.time-label {
+  font-size: 12px;
+  color: #999999;
+  margin-top: 6px;
+  margin-left: 0;
+  align-self: flex-end;
+}
+
+.input-area {
+  display: flex;
+  padding: 10px;
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+}
+
+.send-button {
+  background: #2b537e;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-left: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.age-selection-prompt {
+  margin-top: 30px;
+}
+
+.age-selection-prompt .message-text {
+  background: white;
+  color: black;
+  padding: 12px;
+  border-radius: 10px;
+  margin-left: 19px;
+  font-size: 12px;
+  line-height: 1.5;
+  position: relative;
+  width: calc(100% - 180px);
+  box-sizing: border-box;
+  margin-top: 30px;
+}
+
+/* 20~29 세 */
+.age-dropdown-bubble .message-text {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  width: calc(100% - 235px);
+  margin-left: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+
+}
+
+.age-dropdown-bubble.no-logo {
+  padding-left: 50px;
+}
+
+.age-dropdown {
+  width: 90px;
+  padding: 5px 8px;
+  font-size: 12px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-left: -8px;
+}
+
+.age-dropdown:focus {
+  outline: none;
+}
+
+.sub-text {
+  color: #999999;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* 선택하신 나이에 맞는 지원금이 nn개 있슷빈다 */
+.no-logo-message-text {
+  margin-left:60px; /* 변경됨: 20px → 60px */
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1.3;
+  width: calc(100% - 215px);
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: -6px;
+}
+
+.count-highlight {
+  color: #2b537e; /* 강조 색상 */
+  font-weight: bold; /* 굵게 */
+  font-size: 12px;   /* 살짝 키움 (선택) */
+}
+
+.user-time-label {
+  text-align: right;
+  margin-right: 25px;
+  margin-top: -6px; /* 원하는 만큼 위로 */
+}
