@@ -20,6 +20,6 @@ COPY . .
 # 포트 설정
 EXPOSE 5000
 
-# 애플리케이션 실행
+# 프로덕션 WSGI 서버로 실행
 WORKDIR /app/backend
-CMD ["python", "app_postgresql_api.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app_postgresql_api:app"]

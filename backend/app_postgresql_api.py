@@ -490,4 +490,11 @@ if __name__ == '__main__':
     print("   POST /api/chat - AI 챗봇 대화")
     print("\n🌐 서버 주소: http://localhost:5000")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # 프로덕션 환경에서는 gunicorn 사용, 개발 환경에서는 Flask 개발 서버 사용
+    import os
+    if os.getenv('FLASK_ENV') == 'production':
+        # gunicorn으로 실행 (프로덕션)
+        app.run(debug=False, host='0.0.0.0', port=5000)
+    else:
+        # Flask 개발 서버 (개발)
+        app.run(debug=True, host='0.0.0.0', port=5000)
