@@ -41,5 +41,5 @@ gunicorn app_postgresql_api:app --bind 0.0.0.0:5000 --workers 2\n\
 
 RUN chmod +x /app/start.sh
 
-# 시작 명령어
-CMD ["/app/start.sh"]
+# 시작 명령어 - 환경 변수 디버그 포함
+CMD ["/bin/bash", "-c", "cd /app/backend && python debug_env.py && python init_db.py && gunicorn app_postgresql_api:app --bind 0.0.0.0:5000 --workers 2"]
