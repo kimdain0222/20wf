@@ -179,9 +179,6 @@ if __name__ == '__main__':
     success = initialize_database()
     if success:
         print("✅ 데이터베이스 초기화 성공!")
-        print("🔄 5초 대기 후 종료...")
-        import time
-        time.sleep(5)
         sys.exit(0)
     else:
         print("❌ 데이터베이스 초기화 실패!")
