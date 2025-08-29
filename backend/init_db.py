@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-PostgreSQL 데이터베이스 마이그레이션 스크립트
-복지정책 챗봇 데이터베이스 설정 및 데이터 마이그레이션
+데이터베이스 초기화 스크립트
+Railway에서 별도로 실행하여 데이터베이스를 초기화합니다.
 """
 
-import psycopg2
-import psycopg2.extras
-import json
 import os
+import sys
+import psycopg2
+import json
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -27,52 +27,10 @@ def get_db_connection():
     """PostgreSQL 데이터베이스 연결"""
     try:
         conn = psycopg2.connect(**POSTGRES_CONFIG)
-        print("✅ PostgreSQL 데이터베이스 연결 성공!")
         return conn
     except Exception as e:
-        print(f"❌ 데이터베이스 연결 실패: {e}")
+        print(f"데이터베이스 연결 실패: {e}")
         return None
-
-def create_tables(conn):
-    """테이블 생성"""
-    try:
-        cursor = conn.cursor()
-        
-        # 스키마 파일 읽기
-        with open('database_schema.sql', 'r', encoding='utf-8') as f:
-            schema_sql = f.read()
-        
-        # SQL 실행
-        cursor.execute(schema_sql)
-        conn.commit()
-        
-        print("✅ 데이터베이스 테이블 생성 완료!")
-        return True
-        
-    except Exception as e:
-        print(f"❌ 테이블 생성 실패: {e}")
-        conn.rollback()
-        return False
-
-def insert_sample_data(conn):
-    """샘플 데이터 삽입"""
-    try:
-        cursor = conn.cursor()
-        
-        # 기본 데이터 삽입
-        with open('insert_data.sql', 'r', encoding='utf-8') as f:
-            insert_sql = f.read()
-        
-        cursor.execute(insert_sql)
-        conn.commit()
-        
-        print("✅ 기본 데이터 삽입 완료!")
-        return True
-        
-    except Exception as e:
-        print(f"❌ 기본 데이터 삽입 실패: {e}")
-        conn.rollback()
-        return False
 
 def migrate_crawled_data(conn):
     """크롤링된 정책 데이터 마이그레이션"""
@@ -149,101 +107,76 @@ def migrate_crawled_data(conn):
             
             print(f"✅ {region_name}: {len(policies)}개 정책 처리 완료")
         
-        conn.commit()
         print(f"✅ 총 {total_policies}개 정책 마이그레이션 완료!")
         return True
         
     except Exception as e:
         print(f"❌ 데이터 마이그레이션 실패: {e}")
-        conn.rollback()
         return False
 
-def verify_migration(conn):
-    """마이그레이션 결과 확인"""
+def initialize_database():
+    """데이터베이스 초기화 및 마이그레이션"""
     try:
+        print("🔧 데이터베이스 초기화 시작...")
+        print(f"📡 PostgreSQL 설정: {POSTGRES_CONFIG}")
+        
+        conn = get_db_connection()
+        if not conn:
+            print("❌ 데이터베이스 연결 실패")
+            return False
+        
         cursor = conn.cursor()
         
-        # 통계 조회
-        cursor.execute("SELECT COUNT(*) FROM policies WHERE status = 'active'")
-        policy_count = cursor.fetchone()[0]
+        # 테이블 존재 여부 확인
+        cursor.execute("""
+            SELECT EXISTS (
+                SELECT FROM information_schema.tables 
+                WHERE table_name = 'policies'
+            );
+        """)
         
-        cursor.execute("SELECT COUNT(*) FROM regions")
-        region_count = cursor.fetchone()[0]
+        table_exists = cursor.fetchone()[0]
         
-        cursor.execute("SELECT COUNT(*) FROM categories")
-        category_count = cursor.fetchone()[0]
+        if not table_exists:
+            print("📊 테이블 생성 중...")
+            # 스키마 파일 읽기
+            with open('database_schema.sql', 'r', encoding='utf-8') as f:
+                schema_sql = f.read()
+            
+            cursor.execute(schema_sql)
+            
+            print("📊 기본 데이터 삽입 중...")
+            # 기본 데이터 삽입
+            with open('insert_data.sql', 'r', encoding='utf-8') as f:
+                insert_sql = f.read()
+            
+            cursor.execute(insert_sql)
+            
+            print("📊 크롤링 데이터 마이그레이션 중...")
+            # 크롤링 데이터 마이그레이션
+            migrate_crawled_data(conn)
+            
+            conn.commit()
+            print("✅ 데이터베이스 초기화 완료!")
+        else:
+            print("✅ 데이터베이스가 이미 초기화되어 있습니다.")
         
-        print("\n📊 마이그레이션 결과:")
-        print(f"   - 활성 정책: {policy_count}개")
-        print(f"   - 지역: {region_count}개")
-        print(f"   - 카테고리: {category_count}개")
-        
-        # 지역별 정책 수
-        cursor.execute('''
-            SELECT r.name, COUNT(*) as count
-            FROM policies p
-            LEFT JOIN regions r ON p.region_id = r.id
-            WHERE p.status = 'active'
-            GROUP BY r.name
-            ORDER BY count DESC
-        ''')
-        
-        region_stats = cursor.fetchall()
-        print("\n📍 지역별 정책 분포:")
-        for region, count in region_stats:
-            print(f"   - {region}: {count}개")
-        
+        conn.close()
         return True
         
     except Exception as e:
-        print(f"❌ 마이그레이션 확인 실패: {e}")
-        return False
-
-def main():
-    """메인 마이그레이션 함수"""
-    print("🚀 PostgreSQL 데이터베이스 마이그레이션 시작...")
-    print(f"📡 연결 정보: {POSTGRES_CONFIG['host']}:{POSTGRES_CONFIG['port']}")
-    
-    # 데이터베이스 연결
-    conn = get_db_connection()
-    if not conn:
-        return False
-    
-    try:
-        # 1. 테이블 생성
-        if not create_tables(conn):
-            return False
-        
-        # 2. 기본 데이터 삽입
-        if not insert_sample_data(conn):
-            return False
-        
-        # 3. 크롤링 데이터 마이그레이션
-        if not migrate_crawled_data(conn):
-            return False
-        
-        # 4. 마이그레이션 결과 확인
-        if not verify_migration(conn):
-            return False
-        
-        print("\n🎉 PostgreSQL 마이그레이션 완료!")
-        print("✅ API 서버를 재시작하면 새로운 데이터베이스를 사용할 수 있습니다.")
-        
-        return True
-        
-    except Exception as e:
-        print(f"❌ 마이그레이션 중 오류 발생: {e}")
-        return False
-    
-    finally:
+        print(f"❌ 데이터베이스 초기화 실패: {e}")
         if conn:
+            conn.rollback()
             conn.close()
-            print("🔌 데이터베이스 연결 종료")
+        return False
 
-if __name__ == "__main__":
-    success = main()
+if __name__ == '__main__':
+    print("🚀 데이터베이스 초기화 스크립트 시작...")
+    success = initialize_database()
     if success:
-        print("\n✅ 마이그레이션 성공!")
+        print("✅ 데이터베이스 초기화 성공!")
+        sys.exit(0)
     else:
-        print("\n❌ 마이그레이션 실패!")
-        exit(1)
+        print("❌ 데이터베이스 초기화 실패!")
+        sys.exit(1)
