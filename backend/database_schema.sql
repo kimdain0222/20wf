@@ -105,10 +105,10 @@ CREATE INDEX IF NOT EXISTS idx_policies_category ON policies(category_id);
 CREATE INDEX IF NOT EXISTS idx_policies_status ON policies(status);
 CREATE INDEX IF NOT EXISTS idx_policies_age ON policies(age_min, age_max);
 CREATE INDEX IF NOT EXISTS idx_policies_application_date ON policies(application_start, application_end);
-CREATE INDEX IF NOT EXISTS idx_policies_title ON policies USING gin(to_tsvector('korean', title));
-CREATE INDEX IF NOT EXISTS idx_policies_description ON policies USING gin(to_tsvector('korean', description));
-CREATE INDEX IF NOT EXISTS idx_policies_conditions ON policies USING gin(to_tsvector('korean', conditions));
-CREATE INDEX IF NOT EXISTS idx_policies_benefits ON policies USING gin(to_tsvector('korean', benefits));
+CREATE INDEX IF NOT EXISTS idx_policies_title ON policies USING gin(to_tsvector('simple', title));
+CREATE INDEX IF NOT EXISTS idx_policies_description ON policies USING gin(to_tsvector('simple', description));
+CREATE INDEX IF NOT EXISTS idx_policies_conditions ON policies USING gin(to_tsvector('simple', conditions));
+CREATE INDEX IF NOT EXISTS idx_policies_benefits ON policies USING gin(to_tsvector('simple', benefits));
 
 -- 복합 인덱스
 CREATE INDEX IF NOT EXISTS idx_policies_search ON policies(region_id, category_id, age_min, age_max, status);
