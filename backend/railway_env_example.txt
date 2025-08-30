@@ -1,0 +1,34 @@
+# Railway PostgreSQL 환경 변수 예시
+# Railway 대시보드에서 이 변수들을 설정하세요
+
+# PostgreSQL 연결 정보 (Railway에서 자동으로 제공)
+DATABASE_URL=postgresql://username:password@host:port/database
+PGHOST=your-postgres-host.railway.app
+PGDATABASE=railway
+PGUSER=postgres
+PGPASSWORD=your-postgres-password
+PGPORT=5432
+
+# 또는 POSTGRES_ 접두사 사용
+POSTGRES_HOST=your-postgres-host.railway.app
+POSTGRES_DB=railway
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=your-postgres-password
+POSTGRES_PORT=5432
+
+# IBM Watsonx.ai API 설정
+IBM_API_KEY=your-ibm-api-key
+WATSON_ENDPOINT=https://us-south.ml.cloud.ibm.com/ml/v1/text/generation
+
+# CORS 설정
+ALLOWED_ORIGINS=http://localhost:3000,https://your-frontend-domain.com
+
+# 서버 설정
+FLASK_ENV=production
+DEBUG=False
+PORT=5000
+
+# 참고사항:
+# 1. Railway PostgreSQL 서비스를 생성하면 자동으로 DATABASE_URL이 제공됩니다
+# 2. PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT는 DATABASE_URL에서 파싱됩니다
+# 3. 비밀번호는 Railway 대시보드에서 안전하게 관리됩니다

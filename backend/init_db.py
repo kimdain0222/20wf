@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 # 환경 변수 로드
 load_dotenv()
 
-# PostgreSQL 설정
+# PostgreSQL 설정 (Railway 환경 변수 사용)
 POSTGRES_CONFIG = {
     'host': os.getenv('POSTGRES_HOST', os.getenv('PGHOST')),
     'database': os.getenv('POSTGRES_DB', os.getenv('PGDATABASE')),

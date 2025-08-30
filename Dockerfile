@@ -20,5 +20,5 @@ COPY . .
 # 포트 노출
 EXPOSE 5000
 
-# 시작 명령어 - 환경 변수 디버그 포함
-CMD ["/bin/bash", "-c", "cd /app/backend && echo '🔍 환경 변수 디버그 시작...' && python debug_env.py && echo '🔧 데이터베이스 초기화 시작...' && python init_db.py && echo '🌐 Flask 서버 시작...' && gunicorn app_postgresql_api:app --bind 0.0.0.0:5000 --workers 2"]
+# 시작 명령어 - 연결 테스트 포함
+CMD ["/bin/bash", "-c", "cd /app/backend && echo '🔍 환경 변수 디버그 시작...' && python debug_env.py && echo '🔍 PostgreSQL 연결 테스트 시작...' && python test_connection.py && echo '🔧 데이터베이스 초기화 시작...' && python init_db.py && echo '🌐 Flask 서버 시작...' && gunicorn app_postgresql_api:app --bind 0.0.0.0:5000 --workers 2"]
