@@ -679,10 +679,9 @@ def create_app():
 # 앱 생성
 app = create_app()
 
-# 앱 시작 시 데이터베이스 초기화
-@app.before_first_request
+# 데이터베이스 초기화 함수
 def initialize_database_on_startup():
-    """앱 첫 요청 시 데이터베이스 초기화"""
+    """앱 시작 시 데이터베이스 초기화"""
     try:
         print("🔧 앱 시작 시 데이터베이스 초기화...")
         success = initialize_database()
@@ -692,6 +691,9 @@ def initialize_database_on_startup():
             print("⚠️ 데이터베이스 초기화 실패 - 기존 데이터 사용")
     except Exception as e:
         print(f"⚠️ 데이터베이스 초기화 중 오류: {e}")
+
+# 앱 시작 시 데이터베이스 초기화 실행
+initialize_database_on_startup()
 
 if __name__ == '__main__':
     print("📊 사용 가능한 엔드포인트:")
