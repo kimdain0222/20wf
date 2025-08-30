@@ -14,14 +14,63 @@ from dotenv import load_dotenv
 # 환경 변수 로드
 load_dotenv()
 
+def parse_database_url(database_url):
+    """DATABASE_URL 파싱"""
+    if not database_url:
+        return None
+    
+    try:
+        # postgresql://user:password@host:port/database 형식 파싱
+        if database_url.startswith('postgresql://'):
+            parts = database_url.replace('postgresql://', '').split('@')
+            if len(parts) == 2:
+                user_pass = parts[0].split(':')
+                host_port_db = parts[1].split('/')
+                
+                if len(user_pass) >= 2 and len(host_port_db) >= 2:
+                    user = user_pass[0]
+                    password = user_pass[1]
+                    host_port = host_port_db[0].split(':')
+                    host = host_port[0]
+                    port = host_port[1] if len(host_port) > 1 else '5432'
+                    database = host_port_db[1]
+                    
+                    return {
+                        'host': host,
+                        'database': database,
+                        'user': user,
+                        'password': password,
+                        'port': port
+                    }
+    except Exception as e:
+        print(f"⚠️ DATABASE_URL 파싱 실패: {e}")
+    
+    return None
+
+def get_postgres_config():
+    """PostgreSQL 설정 구성"""
+    # 1. DATABASE_URL에서 파싱 시도
+    database_url = os.getenv('DATABASE_URL')
+    if database_url:
+        config = parse_database_url(database_url)
+        if config:
+            print("✅ DATABASE_URL에서 설정을 파싱했습니다.")
+            return config
+    
+    # 2. 개별 환경 변수 사용 (fallback)
+    config = {
+        'host': os.getenv('POSTGRES_HOST', os.getenv('PGHOST')),
+        'database': os.getenv('POSTGRES_DB', os.getenv('PGDATABASE')),
+        'user': os.getenv('POSTGRES_USER', os.getenv('PGUSER')),
+        'password': os.getenv('POSTGRES_PASSWORD', os.getenv('PGPASSWORD')),
+        'port': os.getenv('POSTGRES_PORT', os.getenv('PGPORT', '5432'))
+    }
+    
+    print("✅ 개별 환경 변수에서 설정을 구성했습니다.")
+    return config
+
 # PostgreSQL 설정 (Railway 환경 변수 사용)
-POSTGRES_CONFIG = {
-    'host': os.getenv('POSTGRES_HOST', os.getenv('PGHOST')),
-    'database': os.getenv('POSTGRES_DB', os.getenv('PGDATABASE')),
-    'user': os.getenv('POSTGRES_USER', os.getenv('PGUSER')),
-    'password': os.getenv('POSTGRES_PASSWORD', os.getenv('PGPASSWORD')),
-    'port': os.getenv('POSTGRES_PORT', os.getenv('PGPORT', '5432'))
-}
+POSTGRES_CONFIG = get_postgres_config()
 
 def get_db_connection():
     """PostgreSQL 데이터베이스 연결"""
