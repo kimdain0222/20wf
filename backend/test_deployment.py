@@ -42,17 +42,21 @@ def test_database_connection():
     
     try:
         import psycopg2
-        import urllib.parse
         
-        database_url = os.getenv('DATABASE_URL')
-        if not database_url:
-            print("❌ DATABASE_URL이 설정되지 않았습니다.")
+        # 개별 환경 변수 사용
+        config = {
+            'host': os.getenv('PGHOST', os.getenv('POSTGRES_HOST')),
+            'database': os.getenv('PGDATABASE', os.getenv('POSTGRES_DB')),
+            'user': os.getenv('PGUSER', os.getenv('POSTGRES_USER')),
+            'password': os.getenv('PGPASSWORD', os.getenv('POSTGRES_PASSWORD')),
+            'port': os.getenv('PGPORT', os.getenv('POSTGRES_PORT', '5432'))
+        }
+        
+        if not all(config.values()):
+            print("❌ 필수 데이터베이스 환경 변수가 누락되었습니다.")
             return False
         
-        # URL 디코딩 추가
-        decoded_url = urllib.parse.unquote(database_url)
-        
-        conn = psycopg2.connect(decoded_url)
+        conn = psycopg2.connect(**config)
         cursor = conn.cursor()
         
         # 간단한 쿼리 테스트
