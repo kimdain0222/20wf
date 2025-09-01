@@ -42,13 +42,17 @@ def test_database_connection():
     
     try:
         import psycopg2
+        import urllib.parse
         
         database_url = os.getenv('DATABASE_URL')
         if not database_url:
             print("❌ DATABASE_URL이 설정되지 않았습니다.")
             return False
         
-        conn = psycopg2.connect(database_url)
+        # URL 디코딩 추가
+        decoded_url = urllib.parse.unquote(database_url)
+        
+        conn = psycopg2.connect(decoded_url)
         cursor = conn.cursor()
         
         # 간단한 쿼리 테스트
