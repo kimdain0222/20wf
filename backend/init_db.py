@@ -20,9 +20,13 @@ def parse_database_url(database_url):
         return None
     
     try:
+        # URL 디코딩 추가
+        import urllib.parse
+        decoded_url = urllib.parse.unquote(database_url)
+        
         # postgresql://user:password@host:port/database 형식 파싱
-        if database_url.startswith('postgresql://'):
-            parts = database_url.replace('postgresql://', '').split('@')
+        if decoded_url.startswith('postgresql://'):
+            parts = decoded_url.replace('postgresql://', '').split('@')
             if len(parts) == 2:
                 user_pass = parts[0].split(':')
                 host_port_db = parts[1].split('/')
