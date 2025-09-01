@@ -214,7 +214,7 @@ function App() {
     try {
       console.log("AI 챗봇 API 호출 중...");
       
-      const response = await fetch('https://your-backend-url.railway.app/api/chat', {
+      const response = await fetch('https://20wf-production.up.railway.app/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -569,7 +569,7 @@ function App() {
     setRegionSelectedAt(new Date());
 
     const dbRegion = regionMap[region];
-    const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://web-production-a9d2.up.railway.app';
+    const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://20wf-production.up.railway.app';
             fetch(`${API_BASE_URL}/api/policies/region/${dbRegion}`)
       .then((res) => res.json())
       .then((data) => {
