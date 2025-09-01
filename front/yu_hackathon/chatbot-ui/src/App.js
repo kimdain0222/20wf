@@ -75,8 +75,8 @@ function PoliciesSummary({ count, onToggle, isOpen }) {
           }}
         >
           {isOpen
-            ? "[\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 접기 ▲ \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0]"
-            : "[\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0 자세히보기 ▼ \u00A0\u00A0\u00A0\u00A0\u00A0\u00A0]"}
+            ? "[        접기 ▲        ]"
+            : "[      자세히보기 ▼      ]"}
         </button>
       </BotMessageNoLogo>
     </>
