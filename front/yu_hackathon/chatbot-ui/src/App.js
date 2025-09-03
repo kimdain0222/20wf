@@ -403,8 +403,8 @@ function App() {
       ]);
 
       // 먼저 지역별 정책을 가져오기
-      const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://web-production-a9d2.up.railway.app';
-  const apiUrl = `${API_BASE_URL}/api/policies/region/${dbRegion}`;
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://20wf-production.up.railway.app';
+      const apiUrl = `${API_BASE_URL}/api/policies/region/${dbRegion}`;
       console.log("API 호출 URL:", apiUrl);
       
       const response = await fetch(apiUrl);
@@ -599,12 +599,15 @@ function App() {
       return;
     }
 
+    // 나이에 맞는 정책 필터링
     const filtered = policies.filter((p) => {
       if (!p.age_range || p.age_range.length === 0) return true;
       return p.age_range.includes(Number(age));
     });
 
     setFilteredPolicies(filtered);
+    
+    // 정책 검색 결과는 UI에서 직접 표시되므로 메시지 추가하지 않음
   };
 
   const toggleDetails = () => setShowDetails((prev) => !prev);

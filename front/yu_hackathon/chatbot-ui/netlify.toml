@@ -11,3 +11,22 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# 도메인 설정
+[context.production.environment]
+  REACT_APP_API_URL = "https://20wf-production.up.railway.app"
+
+# 헤더 설정 (SEO 및 보안 최적화)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 404 페이지 리다이렉트
+[[redirects]]
+  from = "/404"
+  to = "/index.html"
+  status = 200
